@@ -1,4 +1,4 @@
-import React from 'react'
+
 
 // src/assets/Sprites.tsx
 const Sprites = () => (

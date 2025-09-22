@@ -9,11 +9,13 @@ function App() {
   
   return (
     <>
-      <main className='min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-purple-700 m-0'>
-        <Hero />
-        <Skills />
-        <CardProjects/>
-        <Contact/>
+      <main className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-purple-700 m-0">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Hero />
+          <Skills />
+          <CardProjects />
+          <Contact />
+        </div>
         <Footer />
       </main>
 

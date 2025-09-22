@@ -60,46 +60,46 @@ function Contact() {
   };
 
   return (
-    <section className="w-full max-w-lg mx-auto p-6">
-      <h2 className="text-3xl text-stone-100 font-poppins mb-6 text-center">
-        Contacto
+    <section className="w-full max-w-lg mx-auto p-4 sm:p-6">
+      <h2 className="text-2xl sm:text-3xl text-stone-100 font-poppins mb-4 sm:mb-6 text-center">
+      Contacto
       </h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-        <input
-          type="text"
-          placeholder="Tu nombre"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          className="w-full p-3 rounded-lg border border-slate-400/40 bg-transparent text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500"
-        />
-        {errors.nombre && <span className="text-red-500 text-sm">{errors.nombre}</span>}
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-4">
+      <input
+        type="text"
+        placeholder="Tu nombre"
+        value={nombre}
+        onChange={(e) => setNombre(e.target.value)}
+        className="w-full p-2 sm:p-3 rounded-lg border border-slate-400/40 bg-transparent text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500"
+      />
+      {errors.nombre && <span className="text-red-500 text-xs sm:text-sm">{errors.nombre}</span>}
 
-        <input
-          type="email"
-          placeholder="Tu email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-3 rounded-lg border border-slate-400/40 bg-transparent text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500"
-        />
-        {errors.email && <span className="text-red-500 text-sm">{errors.email}</span>}
+      <input
+        type="email"
+        placeholder="Tu email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="w-full p-2 sm:p-3 rounded-lg border border-slate-400/40 bg-transparent text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500"
+      />
+      {errors.email && <span className="text-red-500 text-xs sm:text-sm">{errors.email}</span>}
 
-        <textarea
-          placeholder="Escribime tu mensaje..."
-          value={mensaje}
-          onChange={(e) => setMensaje(e.target.value)}
-          className="w-full p-3 rounded-lg border border-slate-400/40 bg-transparent text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[120px]"
-        ></textarea>
-        {errors.mensaje && <span className="text-red-500 text-sm">{errors.mensaje}</span>}
+      <textarea
+        placeholder="Escribime tu mensaje..."
+        value={mensaje}
+        onChange={(e) => setMensaje(e.target.value)}
+        className="w-full p-2 sm:p-3 rounded-lg border border-slate-400/40 bg-transparent text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[80px] sm:min-h-[120px]"
+      ></textarea>
+      {errors.mensaje && <span className="text-red-500 text-xs sm:text-sm">{errors.mensaje}</span>}
 
-        <button
-          type="submit"
-          className="bg-teal-600 text-slate-100 py-2 px-6 rounded-full font-medium shadow-md hover:bg-teal-500 hover:scale-105 transition w-full"
-        >
-          Enviar
-        </button>
+      <button
+        type="submit"
+        className="bg-teal-600 text-slate-100 py-2 px-4 sm:px-6 rounded-full font-medium shadow-md hover:bg-teal-500 hover:scale-105 transition w-full"
+      >
+        Enviar
+      </button>
 
-        {status === "success" && <p className="text-green-500 mt-2">Formulario enviado correctamente ✅</p>}
-        {status === "error" && <p className="text-red-500 mt-2">Por favor, corrige los errores ❌</p>}
+      {status === "success" && <p className="text-green-500 mt-2 text-xs sm:text-base">Formulario enviado correctamente ✅</p>}
+      {status === "error" && <p className="text-red-500 mt-2 text-xs sm:text-base">Por favor, corrige los errores ❌</p>}
       </form>
     </section>
   );
