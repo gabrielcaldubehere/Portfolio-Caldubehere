@@ -41,22 +41,21 @@ function Contact() {
     setStatus("idle"); // resetea el status antes de enviar
 
     try {
-      const data = { nombre, email, mensaje };
-      const res = await sendContactForm(data);
+  const data = { nombre, email, mensaje };
+  const res = await sendContactForm(data);
 
-      alert("✅ " + res.msg);
-      setNombre("");
-      setEmail("");
-      setMensaje("");
-      setStatus("success");
-    } catch (err) {
-      // Mejor tipar err como unknown y luego chequear si es Error
-      let message = "Hubo un problema al enviar el formulario.";
-      if (err instanceof Error) message = err.message;
+  alert("✅ " + res.message); // ✅ cambió de res.msg a res.message
+  setNombre("");
+  setEmail("");
+  setMensaje("");
+  setStatus("success");
+} catch (err) {
+  let message = "Hubo un problema al enviar el formulario.";
+  if (err instanceof Error) message = err.message;
 
-      alert("❌ " + message);
-      setStatus("error");
-    }
+  alert("❌ " + message);
+  setStatus("error");
+}
   };
 
   return (
