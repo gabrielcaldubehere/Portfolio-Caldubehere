@@ -14,36 +14,36 @@ Validación de campos y feedback visual al usuario
 Refleja mi proceso de aprendizaje y evolución en tecnologías modernas de frontend y backend.
 
 ⚡ Tecnologías
-Frontend	Backend	Otros
+Frontend Backend Otros
 
-React 18	
-Node.js	
+React 18
+Node.js
 Vite
 
-TypeScript	
-Express.js	
+TypeScript
+Express.js
 Tailwind CSS
 
-Axios	
-Nodemailer	
+Axios
+Nodemailer
 dotenv
 🗂 Estructura del Proyecto
 portfolio/
-├── client/                   # Frontend React + Vite
-│   ├── src/
-│   │   ├── components/       # Header, Footer, Hero, Skills, CardProjects, ContactForm
-│   │   ├── services/         # contactService.ts
-│   │   └── App.tsx           # Componente principal
-│   ├── public/               # Archivos estáticos
-│   └── package.json
-├── server/                   # Backend Node + Express
-│   ├── src/
-│   │   ├── controllers/      # contact.controller.js
-│   │   ├── routes/           # contact.routes.js
-│   │   └── services/         # mail.service.js
-│   ├── .env                  # Variables de entorno de mail
-│   ├── server.js             # Punto de entrada del servidor
-│   └── package.json
+├── client/ # Frontend React + Vite
+│ ├── src/
+│ │ ├── components/ # Header, Footer, Hero, Skills, CardProjects, ContactForm
+│ │ ├── services/ # contactService.ts
+│ │ └── App.tsx # Componente principal
+│ ├── public/ # Archivos estáticos
+│ └── package.json
+├── server/ # Backend Node + Express
+│ ├── src/
+│ │ ├── controllers/ # contact.controller.js
+│ │ ├── routes/ # contact.routes.js
+│ │ └── services/ # mail.service.js
+│ ├── .env # Variables de entorno de mail
+│ ├── server.js # Punto de entrada del servidor
+│ └── package.json
 └── README.md
 
 🚀 Instalación y Ejecución
@@ -55,14 +55,12 @@ cd portfolio
 cd server
 npm install
 
-
 Crear .env:
 
 MAIL_HOST=smtp.hostinger.com
 MAIL_PORT=465
 MAIL_USER=tu-email@midominio.com
 MAIL_PASS=tu-contraseña
-
 
 Levantar el servidor:
 
@@ -72,7 +70,6 @@ npm run dev
 cd ../client
 npm install
 npm run dev
-
 
 Accede en navegador: http://localhost:5173
 
@@ -92,11 +89,11 @@ Feedback visual en pantalla:
 
 🔧 Scripts
 Backend
-Script	Acción
-npm run dev	Levanta servidor con nodemon
-npm start	Levanta servidor normal
+Script Acción
+npm run dev Levanta servidor con nodemon
+npm start Levanta servidor normal
 Frontend
-Script	Acción
-npm run dev	Levanta Vite en desarrollo
-npm run build	Genera build listo para deploy
-npm run preview	Previsualiza build de producción
+Script Acción
+npm run dev Levanta Vite en desarrollo
+npm run build Genera build listo para deploy
+npm run preview Previsualiza build de producción

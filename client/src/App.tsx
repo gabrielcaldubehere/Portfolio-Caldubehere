@@ -2,8 +2,9 @@ import Hero from './components/Hero.tsx'
 import Skills from './components/Skills.tsx';
 import Footer from './components/Footer.tsx';
 import CardProjects from './components/CardProjects.tsx';
-import Contact from './components/Contact.tsx';
+import Floating from './components/Floating.tsx';
 import "./App.css"
+import AboutMe from './components/AboutMe.tsx';
 
 function App() {
   
@@ -14,7 +15,8 @@ function App() {
           <Hero />
           <Skills />
           <CardProjects />
-          <Contact />
+          <AboutMe />
+          <Floating/>
         </div>
         <Footer />
       </main>

@@ -10,7 +10,7 @@ const app = express();
 // Configuración de CORS
 app.use(cors({
   origin: process.env.CORS_ORIGIN || "*", // usa la variable de entorno
-  methods: ["GET","POST","PUT","DELETE"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 
