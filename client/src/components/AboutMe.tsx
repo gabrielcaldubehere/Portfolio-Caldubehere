@@ -1,6 +1,6 @@
 function AboutMe() {
   return (
-    <section className="flex flex-col justify-center items-center w-full mt-12 p-6">
+    <section className="flex flex-col justify-center items-center w-full mt-12 mb-20 p-6">
       <h2 className="text-3xl md:text-4xl text-stone-100 font-poppins mb-6">
         Sobre Mí
       </h2>
@@ -21,8 +21,8 @@ function AboutMe() {
         </p>
 
         <p>
-          Actualmente estoy construyendo proyectos propios y un portfolio activo, con el objetivo de 
-          crecer en roles de programación remota y aportar valor en equipos dinámicos.
+          Actualmente estoy construyendo proyectos propios, con el objetivo de 
+          crecer en roles de programación y aportar valor en equipos dinámicos.
         </p>
       </div>
     </section>

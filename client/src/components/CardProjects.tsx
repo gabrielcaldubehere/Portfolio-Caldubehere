@@ -2,7 +2,7 @@
 function CardProjects() {
   return (
 <section className="flex flex-col justify-center items-center w-full mt-4 p-4">
-  <h2 className="text-3xl mt-8 text-stone-100 font-poppins">Proyectos</h2>
+  <h2 className="text-3xl mt-8 mb-12 text-stone-100 font-poppins">Proyectos</h2>
 
   {[1, 2, 3].map((_, index) => (
     <div

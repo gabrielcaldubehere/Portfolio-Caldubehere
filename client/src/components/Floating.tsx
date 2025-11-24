@@ -19,7 +19,7 @@ Quedo a disposición para coordinar una reunión.`;
     Saludos cordiales,
     [Nombre del remitente]`;
     const url = `mailto:contacto@gabrielcaldubehere.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.open(url, "_blank");
+    window.location.href = url;
     setMenuOpen(false);
   };
 
