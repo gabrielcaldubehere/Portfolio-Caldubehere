@@ -1,66 +1,87 @@
+import Section from "./Section";
+import { projects } from "../data/projects";
 
-function CardProjects() {
+function StatusBadge({ status }: { status: "Completado" | "En desarrollo" }) {
+  const isDone = status === "Completado";
   return (
-<section className="flex flex-col justify-center items-center w-full mt-4 p-4">
-  <h2 className="text-3xl mt-8 mb-12 text-stone-100 font-poppins">Proyectos</h2>
-
-  {[1, 2, 3].map((_, index) => (
-    <div
-      key={index}
-      className={`flex flex-col md:flex-row items-center border border-slate-400/40 rounded-xl p-6 mt-6 gap-6 max-w-4xl w-full shadow-md shadow-white/10 ${
-        index % 2 === 1 ? "md:flex-row-reverse" : ""
+    <span
+      className={`inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold ${
+        isDone
+          ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 ring-1 ring-emerald-500/30"
+          : "bg-amber-500/15 text-amber-700 dark:text-amber-300 ring-1 ring-amber-500/30"
       }`}
     >
-      {/* Imagen */}
-      <img
-        className="w-32 h-32 sm:w-48 sm:h-48 object-cover rounded-md"
-        src="/coming-soon-web-banner.webp"
-        alt={`Project ${index + 1}`}
-      />
-
-      {/* Contenido */}
-      <div className="flex flex-col flex-1 gap-3">
-        <p className="text-lg font-light tracking-wide text-slate-200 font-[Poppins]">
-          Proximamente proyecto aquí
-        </p>
-
-        {/* Botones */}
-        <div className="flex gap-4 flex-wrap">
-          <button className="bg-teal-600 px-5 py-2 text-base text-slate-100 rounded-full shadow-md hover:scale-105 hover:bg-teal-500 transition font-medium">
-            Link
-          </button>
-
-          <a
-            href="https://github.com/gabrielcaldubehere"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center w-10 h-10 rounded-full shadow-md hover:scale-110 transition"
-            style={{
-              background: "linear-gradient(135deg, #333 0%, #6e5494 100%)",
-            }}
-          >
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 448 448"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <rect width="448" height="448" rx="224" fill="#333" />
-              <path
-                d="M224 80c-79.5 0-144 64.5-144 144 0 63.6 41.2 117.6 98.3 136.7 7.2 1.3 9.8-3.1 9.8-6.9 0-3.4-.1-12.3-.2-24.1-40 8.7-48.4-19.3-48.4-19.3-6.6-16.7-16.1-21.2-16.1-21.2-13.2-9 1-8.8 1-8.8 14.6 1 22.3 15 22.3 15 13 22.3 34.1 15.9 42.4 12.2 1.3-9.4 5.1-15.9 9.3-19.6-32-3.6-65.6-16-65.6-71.3 0-15.8 5.6-28.7 14.8-38.8-1.5-3.6-6.4-18.2 1.4-37.9 0 0 12-3.8 39.3 14.8 11.4-3.2 23.6-4.8 35.8-4.8s24.4 1.6 35.8 4.8c27.3-18.6 39.3-14.8 39.3-14.8 7.8 19.7 2.9 34.3 1.4 37.9 9.2 10.1 14.8 23 14.8 38.8 0 55.5-33.7 67.6-65.8 71.2 5.2 4.5 9.8 13.4 9.8 27.1 0 19.6-.2 35.4-.2 40.2 0 3.8 2.6 8.2 9.9 6.8C326.8 341.6 368 287.6 368 224c0-79.5-64.5-144-144-144z"
-                fill="#fff"
-              />
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-  ))}
-</section>
-
-
-  )
+      {status}
+    </span>
+  );
 }
 
-export default CardProjects
+function GitHubIcon({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M12 .5a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.25 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .5Z" />
+    </svg>
+  );
+}
+
+export default function CardProjects() {
+  return (
+    <Section
+      id="proyectos"
+      title="Proyectos destacados"
+      description="Soluciones y productos en los que trabajé, con foco en resolver problemas reales mediante desarrollo full stack e IA aplicada."
+    >
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project) => (
+          <article
+            key={project.id}
+            className="flex h-full flex-col rounded-3xl border border-[var(--border)] bg-[var(--bg-elevated)] p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-[var(--shadow)]"
+          >
+            <div className="flex flex-wrap items-center gap-2">
+              <StatusBadge status={project.status} />
+            </div>
+            <h3 className="mt-4 text-xl font-semibold tracking-tight text-[var(--text)]">
+              {project.title}
+            </h3>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-[var(--muted)]">
+              {project.summary}
+            </p>
+            <ul className="mt-4 flex flex-wrap gap-2">
+              {project.stack.map((tech) => (
+                <li
+                  key={tech}
+                  className="rounded-full border border-[var(--border)] bg-[var(--bg)] px-2.5 py-1 text-xs font-medium text-[var(--text)]"
+                >
+                  {tech}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-3">
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg)] px-4 py-2 text-sm font-semibold text-[var(--text)] transition hover:-translate-y-0.5 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+                >
+                  <GitHubIcon />
+                  GitHub
+                </a>
+              )}
+              {project.demoUrl && (
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-4 py-2 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:brightness-110"
+                >
+                  Demo en vivo
+                </a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </Section>
+  );
+}

@@ -1,28 +1,28 @@
-import Hero from './components/Hero.tsx'
-import Skills from './components/Skills.tsx';
-import Footer from './components/Footer.tsx';
-import CardProjects from './components/CardProjects.tsx';
-import Floating from './components/Floating.tsx';
-import "./App.css"
-import AboutMe from './components/AboutMe.tsx';
+import "./App.css";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import CardProjects from "./components/CardProjects";
+import Skills from "./components/Skills";
+import AboutMe from "./components/AboutMe";
+import ContactForm from "./components/ContactForm";
+import Footer from "./components/Footer";
+import AIChatWidget from "./components/AIChatWidget";
 
 function App() {
-  
   return (
-    <>
-      <main className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-purple-700 m-0">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Hero />
-          <Skills />
-          <CardProjects />
-          <AboutMe />
-          <Floating/>
-        </div>
-        <Footer />
+    <div className="min-h-screen bg-[var(--bg)] text-[var(--text)]">
+      <Header />
+      <main className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10">
+        <Hero />
+        <CardProjects />
+        <Skills />
+        <AboutMe />
+        <ContactForm />
       </main>
-
-    </>
-  )
+      <Footer />
+      <AIChatWidget />
+    </div>
+  );
 }
 
-export default App
+export default App;

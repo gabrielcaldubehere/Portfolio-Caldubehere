@@ -1,73 +1,87 @@
-import React from "react";
+import Section from "./Section";
 
-interface Skill {
-  name: string;
-  src: string;
-  extraClasses?: string;
-}
+type SkillItem =
+  | { name: string; src: string; invertDark?: boolean }
+  | { name: string; text: string };
 
-interface SectionProps {
-  title: string;
-  items: Skill[];
-}
-
-const Section: React.FC<SectionProps> = ({ title, items }) => (
-  <div className="w-full mt-12 flex flex-col items-center">
-    <h3 className="text-xl sm:text-2xl font-semibold mb-6 text-center px-6 py-2 inline-block rounded-full bg-gradient-to-r from-gray-700 to-gray-600 text-white shadow-md">
-      {title}
-    </h3>
-    <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 w-full max-w-4xl mx-auto justify-center">
-      {items.map((skill, index) => (
-        <li
-          key={index}
-          className="transition-transform duration-300 hover:scale-110 flex flex-col items-center border border-stone-700 rounded-lg shadow-md bg-stone-900 p-4 hover:shadow-purple-500/30"
-        >
-          <img
-            src={skill.src}
-            alt={skill.name}
-            className={`w-12 h-12 sm:w-16 sm:h-16 ${skill.extraClasses || ""}`}
-          />
-          <span className="text-stone-100 mt-2 text-xs sm:text-sm font-light tracking-wide">
-            {skill.name}
-          </span>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
-
-function Skills() {
-  const skills = {
-    frontend: [
-      { name: "HTML", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
-      { name: "CSS", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
-      { name: "JavaScript", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
-      { name: "TypeScript", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+const groups: { title: string; items: SkillItem[] }[] = [
+  {
+    title: "Frontend",
+    items: [
       { name: "React", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
-      { name: "Tailwind CSS", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "TypeScript", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "JavaScript", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+      { name: "Tailwind CSS v4", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" },
+      { name: "HTML5", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+      { name: "CSS3", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
       { name: "Vite", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vitejs/vitejs-original.svg" },
     ],
-    backend: [
-      { name: "NodeJS", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
-      { name: "Express", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg", extraClasses: "bg-white p-2 rounded" },
+  },
+  {
+    title: "Backend & Data",
+    items: [
+      { name: "Node.js", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "Express", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg", invertDark: true },
+      { name: "Python", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "FastAPI", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
+      { name: "PostgreSQL", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
       { name: "MySQL", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+      { name: "Supabase", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" },
+      { name: "SQLAlchemy", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original.svg", invertDark: true },
     ],
-    tools: [
-      { name: "VS Code", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+  },
+  {
+    title: "Herramientas & IA",
+    items: [
       { name: "Git", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+      { name: "VS Code", src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" },
+      { name: "LLMs / APIs", text: "LLM" },
+      { name: "MCP / Skills", text: "MCP" },
     ],
-  };
+  },
+];
 
+export default function Skills() {
   return (
-    <section className="flex flex-col justify-center items-center px-4 mt-30 mb-20">
-      <h2 className="text-2xl sm:text-3xl text-stone-100 font-poppins text-center mb-8">
-        Habilidades
-      </h2>
-      <Section title="Frontend" items={skills.frontend} />
-      <Section title="Backend" items={skills.backend} />
-      <Section title="Herramientas" items={skills.tools} />
-    </section>
+    <Section
+      id="habilidades"
+      eyebrow="Stack"
+      title="Habilidades técnicas"
+      description="Tecnologías y herramientas con las que diseño, construyo y despliego productos web de punta a punta."
+    >
+      <div className="space-y-10">
+        {groups.map((group) => (
+          <div key={group.title}>
+            <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--muted)]">
+              {group.title}
+            </h3>
+            <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+              {group.items.map((item) => (
+                <li
+                  key={item.name}
+                  className="group flex flex-col items-center justify-center gap-2 rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] p-4 text-center transition hover:-translate-y-1 hover:border-[color-mix(in_srgb,var(--accent)_40%,var(--border))] hover:shadow-md"
+                >
+                  {"src" in item ? (
+                    <img
+                      src={item.src}
+                      alt={item.name}
+                      loading="lazy"
+                      className={`h-10 w-10 object-contain transition group-hover:scale-110 ${
+                        "invertDark" in item && item.invertDark ? "dark:invert" : ""
+                      }`}
+                    />
+                  ) : (
+                    <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--bg-soft)] text-xs font-bold text-[var(--accent)]">
+                      {item.text}
+                    </span>
+                  )}
+                  <span className="text-xs font-medium text-[var(--text)] sm:text-sm">{item.name}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </Section>
   );
 }
-
-export default Skills;
